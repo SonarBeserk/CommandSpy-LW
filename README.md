@@ -1,4 +1,4 @@
-CommandSpy-LW
-=============
+CommandSpyLW
+=========
 
-Repo for the bukkit plugin CommandSpy http://dev.bukkit.org/bukkit-plugins/command-spy/
+Bukkit plugin that provides lightweigh command tracking and logging. http://dev.bukkit.org/bukkit-plugins/command-spy/
