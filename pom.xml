@@ -133,6 +133,42 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Shading -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <outputDirectory>${project.build.directory}/original</outputDirectory>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>org.jooq:jooq</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>org.bukkit:*</exclude>
+                                    <exclude>me.sonarbeserk:beserkcore</exclude>
+                                </excludes>
+                            </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.jooq</pattern>
+                                    <shadedPattern>cslw.shifted.org.jooq</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
