@@ -17,3 +17,51 @@ settings:
 
   # What prefix should be used for the plugin? | {name} is replaced with the plugin name
   prefix: "&f[&r&b{name}&r&f]"
+
+  # Updater Settings
+  updater:
+
+    # Is the updater enabled?
+    enabled: true
+
+    # What modes should be used when updating? | notify - notifies console and people with permission of new updates | update - downloads new updates then notifies console and people with relevent permissions
+    mode: notify
+
+    # Should the download information of updates be logged to console?
+    log-downloads: false
+
+  # The type of database to use | mysql - mysql database | sqlite - sqlite database
+  databaseType: sqlite
+
+  # Database Settings
+  database:
+
+    # Mysql Settings
+    mysql:
+
+      # Is this mysql database using MariaDB?
+      mariadbDialect: false
+
+      # Mysql host to connect to
+      host: localhost
+
+      # Username for the mysql database
+      username: "root"
+
+      # Password for the mysql database
+      password: ""
+
+      # The port for the mysql server
+      port: 3306
+
+    # Sqlite Settings
+    sqlite:
+
+      # The path to create the sqlite file at. NOTE: IF YOU DON'T KNOW WHAT THIS IS DON'T TOUCH IT! | {plugindata} - the path to the plugin data folder
+      path: "{plugindata}"
+
+    # Database to connect to
+    name: "lockup"
+
+    # Prefix for the tables
+    prefix: cslw_
