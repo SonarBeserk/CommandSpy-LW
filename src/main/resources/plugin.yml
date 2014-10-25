@@ -13,9 +13,6 @@ commands:
     usage: "${project.name} Usage: /${project.name.lowercase} help"
     aliases: [${project.name.short}]
 
-  displayname:
-    description: display name command
-
 permissions:
 
   # Singular Nodes
