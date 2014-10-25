@@ -91,6 +91,31 @@ public class CommandSpyLW extends UpdatingJavaPlugin {
         return databaseHandler;
     }
 
+    /**
+     * Enables spying of commands for a provided UUID
+     * @param UUID the UUID to enable spying for
+     */
+    public void enableSpying(UUID UUID) {
+        commandSpysList.add(UUID);
+    }
+
+    /**
+     * Disables spying of commands for a provided UUID
+     * @param UUID the UUID to disable spying for
+     */
+    public void disableSpying(UUID UUID) {
+        commandSpysList.remove(UUID);
+    }
+
+    /**
+     * Returns if the UUID is in the list of players spying
+     * @param UUID the UUID to check for
+     * @return if the UUID is in the list of players spying
+     */
+    public boolean isSpying(UUID UUID) {
+        return commandSpysList.contains(UUID);
+    }
+
     @Override
     public void onDisable() {
         super.onDisable();

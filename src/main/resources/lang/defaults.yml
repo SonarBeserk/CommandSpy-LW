@@ -25,7 +25,6 @@ outOfDateConfig: "&cThe version of the config file being run is out of date! Ple
 # Message to send when the language file being run is out of date
 outOfDateLanguage: "&cThe version of the language file being run is out of date! Please delete the file and reload the plugin to generate the new version! (Backup the old version first!)"
 
-
 # Sent when a sender lacks permission to do something
 noPermission: "&cYou do not have permission to do that!"
 
@@ -41,3 +40,18 @@ commandPlayerRequired: "You must be a player to use this command!"
 
 # Usage for the plugin master command | {name} - the name of the plugin
 usageMain: "&7Subcommands: \n reload - reloads the all the plugin's files"
+
+# Spying
+
+# Sent when a player enables spying
+spyingEnabled: "&2You are now spying on commands!"
+
+# Already
+
+# Sent when a player tries to enable spying and is already spying
+alreadySpying: "&cYou are already spying!"
+
+# Not
+
+# Sent when a player tries to disable spying and is not spying
+notSpying: "&cYou are not spying!"
