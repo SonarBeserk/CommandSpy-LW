@@ -61,7 +61,7 @@ settings:
       path: "{plugindata}"
 
     # Database to connect to
-    name: "lockup"
+    name: "commandspylw"
 
     # Prefix for the tables
     prefix: cslw_
