@@ -21,9 +21,9 @@
 
 package me.sonarbeserk.commandspylw.database;
 
+import me.sonarbeserk.commandspylw.CommandSpyLW;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -49,7 +49,7 @@ public class MysqlDatabaseHandler extends DatabaseHandler {
     @Override
     public DSLContext getContext() {
         if (connected()) {
-            if (LockUp.useMariaDBDialect) {
+            if (CommandSpyLW.useMariaDBDialect) {
                 return using(conn, SQLDialect.MARIADB);
             } else {
                 return using(conn, SQLDialect.MYSQL);
@@ -62,8 +62,11 @@ public class MysqlDatabaseHandler extends DatabaseHandler {
     @Override
     public boolean connected() {
         try {
-            return conn != null && !conn.isClosed();
+            if(conn == null) {
+                return false;
+            }
 
+            return !conn.isClosed();
         } catch (SQLException e) {
             return false;
         }
@@ -74,7 +77,6 @@ public class MysqlDatabaseHandler extends DatabaseHandler {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection("jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database, this.username, this.password);
-
         } catch (Exception e) {
             log.log(Level.WARNING, "Failed to connect to database: " + e.getMessage());
         }
@@ -87,7 +89,6 @@ public class MysqlDatabaseHandler extends DatabaseHandler {
         if (connected()) {
             try {
                 conn.close();
-
             } catch (SQLException e) {
                 log.log(Level.WARNING, "Failed to close connection: " + e.getMessage());
                 return false;

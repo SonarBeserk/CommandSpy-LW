@@ -55,8 +55,11 @@ public class SQLiteDatabaseHandler extends DatabaseHandler {
     @Override
     public boolean connected() {
         try {
-            return conn != null && !conn.isClosed();
+            if(conn == null) {
+                return false;
+            }
 
+            return !conn.isClosed();
         } catch (SQLException e) {
             return false;
         }
@@ -67,7 +70,6 @@ public class SQLiteDatabaseHandler extends DatabaseHandler {
         try {
             Class.forName("org.sqlite.JDBC").newInstance();
             conn = DriverManager.getConnection("jdbc:sqlite:" + path + "/" + dbName + ".db");
-
         } catch (Exception e) {
             log.log(Level.WARNING, "Failed to connect to database: " + e.getMessage());
         }
@@ -80,7 +82,6 @@ public class SQLiteDatabaseHandler extends DatabaseHandler {
         if (connected()) {
             try {
                 conn.close();
-
             } catch (SQLException e) {
                 log.log(Level.WARNING, "Failed to close connection: " + e.getMessage());
                 return false;
