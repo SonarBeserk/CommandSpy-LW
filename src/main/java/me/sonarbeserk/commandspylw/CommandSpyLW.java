@@ -26,6 +26,10 @@ import me.sonarbeserk.commandspylw.database.DatabaseHandler;
 import me.sonarbeserk.commandspylw.database.MysqlDatabaseHandler;
 import me.sonarbeserk.commandspylw.database.SQLiteDatabaseHandler;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 public class CommandSpyLW extends UpdatingJavaPlugin {
     public static String databaseName = null;
     public static String prefix = null;
@@ -34,9 +38,13 @@ public class CommandSpyLW extends UpdatingJavaPlugin {
 
     private DatabaseHandler databaseHandler = null;
 
+    private List commandSpysList = null;
+
     @Override
     public void onEnable() {
         super.onEnable();
+
+        commandSpysList = new ArrayList<UUID>();
 
         databaseName = getConfig().getString("settings.database.name");
         prefix = getConfig().getString("settings.database.prefix");
@@ -46,22 +54,22 @@ public class CommandSpyLW extends UpdatingJavaPlugin {
     }
 
     @Override
-    public int getProjectID() {
+    public final int getProjectID() {
         return 0; // Replace at distribution
     }
 
     @Override
-    public boolean shouldSaveData() {
+    public final boolean shouldSaveData() {
         return false;
     }
 
     @Override
-    public boolean registerPremadeMainCMD() {
+    public final boolean registerPremadeMainCMD() {
         return true;
     }
 
     @Override
-    public String getPermissionPrefix() {
+    public final String getPermissionPrefix() {
         return getConfig().getString("settings.permissionPrefix");
     }
 
